@@ -1,0 +1,8 @@
+---
+  - name: zackplaybooktest1
+    hosts: linux
+    tasks:
+      - name: ensure httpd is there
+        yum:
+          name: httpd
+          state: latest
