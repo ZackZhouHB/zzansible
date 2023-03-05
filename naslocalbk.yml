@@ -1,0 +1,21 @@
+---
+- name: nas config backup demo
+  hosts: nas
+  tasks:
+   - name: Create backup directory
+     file:
+       path: /data/bk
+       state: directory
+
+
+- name: cd and tar freenas config db file
+  hosts: nas
+  tasks:
+   - name: cd and tar
+     shell:
+       chdir: /data/bk
+       cmd: tar fczP freenas-v1.db.tar /data/freenas-v1.db
+   - name: fetch tar file to local
+     fetch:
+       src: /data/bk/freenas-v1.db.tar
+       dest: /root/nasbk
