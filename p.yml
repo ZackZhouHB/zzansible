@@ -1,0 +1,15 @@
+---
+  - hosts: newnas
+    tasks:
+      - name: upgrade all packages
+        yum:
+          name: "*"
+          state: latest
+
+
+---
+  -name: ping
+   hosts: newnas
+   become: yes
+   tasks:
+    - ping 

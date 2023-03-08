@@ -1,0 +1,5 @@
+---
+ - hosts: newnas
+   tasks:
+     - name:Copy the installation tas file from master to each nas server
+       copy: src=/root/nasupg/xx.tar dest=/root/ 

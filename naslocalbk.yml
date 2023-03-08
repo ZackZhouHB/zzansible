@@ -1,16 +1,11 @@
 ---
 - name: nas config backup demo
-  hosts: nas
+  hosts: newnas
   tasks:
    - name: Create backup directory
      file:
        path: /data/bk
        state: directory
-
-
-- name: cd and tar freenas config db file
-  hosts: nas
-  tasks:
    - name: cd and tar
      shell:
        chdir: /data/bk
@@ -19,3 +14,13 @@
      fetch:
        src: /data/bk/freenas-v1.db.tar
        dest: /root/nasbk
+   - name: copy installation media from master node to slave node
+     copy:
+       src: /TrueNAS-13.0-U4-manual-update.tar
+       dest: /data/bk/
+   - name: upgrade
+     shell:
+       cmd: freenas-update -v /data/bk/TrueNAS-13.0-U4-manual-update.tar
+   - name: reboot module demo
+     shell: 
+       cmd: reboot
