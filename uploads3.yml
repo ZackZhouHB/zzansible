@@ -1,7 +1,0 @@
----
-- name: PUT/upload with metadata 
-  amazon.aws.s3_object:
-    bucket: s3://zackzs3001/
-    object: s3://zackzs3001/nasbk/
-    src: /root/nasbk/
-    mode: put

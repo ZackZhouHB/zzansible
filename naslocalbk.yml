@@ -21,6 +21,3 @@
    - name: upgrade
      shell:
        cmd: freenas-update -v /data/bk/TrueNAS-13.0-U4-manual-update.tar
-   - name: reboot module demo
-     shell: 
-       cmd: reboot

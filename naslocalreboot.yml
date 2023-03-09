@@ -1,0 +1,9 @@
+---
+- name: nas config backup demo
+  hosts: newnas
+  tasks:
+   - name: check version
+     shell: "cat /etc/version"
+     register: out
+
+   - debug: var=out.stdout_lines
