@@ -1,5 +1,5 @@
 ---
-- name: nas config backup demo
+- name: Output NAS version after upgrade
   hosts: newnas
   tasks:
    - name: check version
