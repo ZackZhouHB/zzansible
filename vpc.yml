@@ -1,5 +1,5 @@
 - hosts: localhost
-  connecting: local
+  connection: local
   gather-facts: False
   tasks:
     - name: Import VPC Variables
