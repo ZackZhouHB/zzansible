@@ -1,0 +1,23 @@
+# VPC Name
+vpc_name: "zack3-vpc"
+
+# VPC Range
+vpcCidr: '172.20.0.0/16'
+
+# Subnets Range cut from main VPC range above
+PubSub1Cidr: 172.20.1.0/24
+PubSub1Cidr: 172.20.2.0/24
+PubSub1Cidr: 172.20.3.0/24
+PriSub1Cidr: 172.20.4.0/24
+PriSub1Cidr: 172.20.5.0/24
+PriSub1Cidr: 172.20.6.0/24
+
+# Region Name
+region: "ap-southeast-2"
+
+# Zone Name
+zone1: ap-southeast-2a	
+zone2: ap-southeast-2b
+zone3: ap-southeast-2c
+
+state: present
