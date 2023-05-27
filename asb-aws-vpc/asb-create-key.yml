@@ -1,0 +1,19 @@
+- hosts: localhost
+  connection: local
+  gather_facts: False
+  tasks:
+    - name: create a new ec2 key pair, returns generated private key
+      ec2_key:
+        name: sample_keypair
+        region: ap-southeast-2
+      register: keyout
+
+    - debug:
+        var: keyout
+
+    - name: store key to file
+      copy:
+        content: "{{keyout.key.private_key}}"
+        dest: ./sample_keypair.pem
+      when: keyout.changed
+
