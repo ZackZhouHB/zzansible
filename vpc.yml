@@ -16,7 +16,7 @@
         state: "{{state}}"
       register: vpcout
 
-    -debug:
+    - debug:
        var: vpcout
 
     - name: create Public subnet
