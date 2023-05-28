@@ -11,10 +11,5 @@ prirtid: rtb-02df607e683d820cf
 natgwid: nat-0f13f0fe3e9b873b3
 
 region: ap-southeast-2
-
-
-
-
-# BEGIN ANSIBLE MANAGED BLOCK
 BastionSGid: sg-037ddec051cb65218
-# END ANSIBLE MANAGED BLOCK
+
