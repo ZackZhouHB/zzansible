@@ -68,11 +68,11 @@
             group_id: "{{zack2asb_StackSG_out.group_id}}"
 
     - name: Creating Nginx web01
-      ec2_instance:
+      ec2:
         key_name: zack2-asb-stack-ec2-key
         region: "{{region}}"
         instance_type: t2.micro
-        image_id: "{{nginx_ami}}"
+        image: "{{nginx_ami}}"
         wait: yes
         wait_timeout: 300
         instance_tags:
@@ -89,11 +89,11 @@
       register: web01_out
 
     - name: Creating tomcat app01
-      ec2_instance:
+      ec2:
         key_name: zack2-asb-stack-ec2-key
         region: "{{region}}"
         instance_type: t2.micro
-        image_id: "{{tomcat_ami}}"
+        image: "{{tomcat_ami}}"
         wait: yes
         wait_timeout: 300
         instance_tags:
@@ -110,11 +110,11 @@
       register: app01_out
 
     - name: Creating memcache mc01
-      ec2_instance:
+      ec2:
         key_name: zack2-asb-stack-ec2-key
         region: "{{region}}"
         instance_type: t2.micro
-        image_id: "{{memcache_ami}}"
+        image: "{{memcache_ami}}"
         wait: yes
         wait_timeout: 300
         instance_tags:
@@ -131,11 +131,11 @@
       register: mc01_out
 
     - name: Creating RabbitMQ rmq01
-      ec2_instance:
+      ec2:
         key_name: zack2-asb-stack-ec2-key
         region: "{{region}}"
         instance_type: t2.micro
-        image_id: "{{rmq_ami}}"
+        image: "{{rmq_ami}}"
         wait: yes
         wait_timeout: 300
         instance_tags:
@@ -152,11 +152,11 @@
       register: rmq01_out
 
     - name: Creating Mysql db01
-      ec2_instance:
+      ec2:
         key_name: zack2-asb-stack-ec2-key
         region: "{{region}}"
         instance_type: t2.micro
-        image_id: "{{mysql_ami}}"
+        image: "{{mysql_ami}}"
         wait: yes
         wait_timeout: 300
         instance_tags:
