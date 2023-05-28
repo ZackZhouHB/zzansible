@@ -1,8 +1,0 @@
-# AMI ID
-bastion_ami: ami-0da25504d467cb134
-
-# Region Name
-region: "ap-southeast-2"
-
-# Security Group My IP
-MYIP: 49.3.117.241/32
