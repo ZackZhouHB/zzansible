@@ -85,7 +85,7 @@
           Project: zack2asbstack
           Owner: DevOps Team
         group_id: "{{zack2asb_StackSG_out.group_id}}"
-        vpc_subnet_id: "{{privsub1id}}"
+        vpc_subnet_id: "{{prisub1id}}"
       register: web01_out
 
     - name: Creating tomcat app01
@@ -106,7 +106,7 @@
           Project: zack2asbstack
           Owner: DevOps Team
         group_id: "{{zack2asb_StackSG_out.group_id}}"
-        vpc_subnet_id: "{{privsub1id}}"
+        vpc_subnet_id: "{{prisub1id}}"
       register: app01_out
 
     - name: Creating memcache mc01
@@ -127,7 +127,7 @@
           Project: zack2asbstack
           Owner: DevOps Team
         group_id: "{{zack2asb_StackSG_out.group_id}}"
-        vpc_subnet_id: "{{privsub1id}}"
+        vpc_subnet_id: "{{prisub1id}}"
       register: mc01_out
 
     - name: Creating RabbitMQ rmq01
@@ -148,7 +148,7 @@
           Project: zack2asbstack
           Owner: DevOps Team
         group_id: "{{zack2asb_StackSG_out.group_id}}"
-        vpc_subnet_id: "{{privsub1id}}"
+        vpc_subnet_id: "{{prisub1id}}"
       register: rmq01_out
 
     - name: Creating Mysql db01
@@ -169,5 +169,5 @@
           Project: zack2asbstack
           Owner: DevOps Team
         group_id: "{{zack2asb_StackSG_out.group_id}}"
-        vpc_subnet_id: "{{privsub1id}}"
+        vpc_subnet_id: "{{prisub1id}}"
       register: db01_out
