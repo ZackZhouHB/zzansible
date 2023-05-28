@@ -58,11 +58,11 @@
 
     - name: Update Securiry Group with its own sg id
       ec2_group:
-        name: vproStack-sg
+        name: zackasb_Stack-sg
         description: Allow port 22 from everywhere and all port within sg
         region: "{{region}}"
         vpc_id: "{{vpcid}}"
         purge_rules: no
         rules:
           - proto: all
-            group_id: "{{vproStackSG_out.group_id}}"
+            group_id: "{{zack2asb_StackSG_out.group_id}}"
