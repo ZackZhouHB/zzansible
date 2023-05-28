@@ -40,21 +40,12 @@
         state: present
       tags:
         - package
+    
+    - name: excute installation 
+      copy: src=files/install.sh dest=/home/ubuntu mode=0777
 
-    - apt_repository:
-        repo: deb https://dl.bintray.com/rabbitmq/debian bionic focal main
-        state: present
-      tags:
-        - package
-
-    - name: Install Rabbit MQ
-      apt:
-        name: rabbitmq-server
-        state: present
-        update_cache: yes
-      tags:
-        - package
-
+    - name: Execute the script
+      local_action: command sudo sh /home/ubuntu/install.sh
 
     - name: Start & Enable RMQ
       service:
