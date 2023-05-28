@@ -138,7 +138,7 @@
           - "{{prisub3_out.subnet.id}}"
         routes:
           - dest: 0.0.0.0/0
-            gateway_id: "{{natgw_out.gateway_id}}"
+            gateway_id: "{{natgw_out.nat_gateway_id}}"
       register: prirt_out
 
     - debug:
@@ -151,7 +151,7 @@
           - pubsub1_out.subnet.id
           - pubsub2_out.subnet.id
           - pubsub3_out.subnet.id
-          - natgw_out.gateway_id
+          - nnatgw_out.nat_gateway_id
           - igw_out.gateway_id
           - prirt_out_route_table.id
           - pubrt_out_route_table.id
@@ -167,11 +167,11 @@
         igwid: "{{igw_out.gateway_id}}"
         pubrtid: "{{pubrt_out_route_table.id}}"
         prirtid: "{{prirt_out_route_table.id}}"
-        natgwid: "{{natgw_out.gateway_id}}"
+        natgwid: "{{natgw_out.nat_gateway_id}}"
         cacheable: yes
 
     - name: copy vars to vpc vars file
       copy:
-        content: "vpcid: {{vpcout.vpc.id}}\nprisub1id: {{prisub1_out.subnet.id}}\nprisub2id: {{prisub2_out.subnet.id}}\nprisub3id: {{prisub3_out.subnet.id}}\npubsub1id: {{pubsub1_out.subnet.id}}\npubsub2id: {{pubsub2_out.subnet.id}}\npubsub3id: {{pubsub3_out.subnet.id}}\nigwid:{{igw_out.gateway_id}}\npubrtid: {{pubrt_out_route_table.id}}\nprirtid: {{prirt_out_route_table.id}}\nnatgwid: {{natgw_out.gateway_id}}\n" 
+        content: "vpcid: {{vpcout.vpc.id}}\nprisub1id: {{prisub1_out.subnet.id}}\nprisub2id: {{prisub2_out.subnet.id}}\nprisub3id: {{prisub3_out.subnet.id}}\npubsub1id: {{pubsub1_out.subnet.id}}\npubsub2id: {{pubsub2_out.subnet.id}}\npubsub3id: {{pubsub3_out.subnet.id}}\nigwid:{{igw_out.gateway_id}}\npubrtid: {{pubrt_out_route_table.id}}\nprirtid: {{prirt_out_route_table.id}}\nnatgwid: {{natgw_out.nat_gateway_id}}\n" 
         dest: vars/output_vars
 
