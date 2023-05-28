@@ -10,12 +10,6 @@ igwid: igw-0488fe93332ab8c5e
 pubrtid: rtb-03bc98218ee6496ce
 prirtid: rtb-02df607e683d820cf
 natgwid: nat-0f13f0fe3e9b873b3
-
-region: ap-southeast-2
-
-
-
-
 # BEGIN ANSIBLE MANAGED BLOCK
 BastionSGid: sg-037ddec051cb65218
-
+# END ANSIBLE MANAGED BLOCK
