@@ -53,6 +53,7 @@
           Project: zack2
           Owner: zack
         group_id: "{{bastion_sg_out.group_id}}"
+        vpc_subnet_id: "{{pubsub1id}}"
       register: bastion_ec2_out
       
 
