@@ -1,0 +1,24 @@
+---
+- name: Setup zack2 ansbile Stack
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: Import VPC setup Variable
+      include_vars: vars/output_vars
+
+    - name: Import zack2-asb-stack setup Variable
+      include_vars: vars/stack-setup
+
+    - name: Create zack2-asb-stack ec2 key
+      ec2_key:
+        name: zack2-asb-stack-ec2-key
+        region: "{{region}}"
+      register: zack2asbstack_key_out
+
+    - name: Save private key into file zack2-asb-stack-ec2-key.pem
+      copy:
+        content: "{{zack2asbstack_key_out.key.private_key}}"
+        dest: "./zack2-asb-stack-ec2-key.pem"
+        mode: 0600
+      when: zack2asbstack_key_out.changed
