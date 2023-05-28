@@ -25,7 +25,7 @@
     - name: create security group for bastion host
       ec2_group: 
         name: zack2-bastion-sg
-        descreiption: allow port 22 from anywhere
+        description: allow port 22 from anywhere
         region: "{{region}}"
         vpc_id: "{{vpcid}}"
         rules:
