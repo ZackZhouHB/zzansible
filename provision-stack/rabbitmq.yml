@@ -44,7 +44,6 @@
     - apt_repository:
         repo: deb https://dl.bintray.com/rabbitmq/debian bionic focal main
         state: present
-        ignore_errors: yes
       tags:
         - package
 
