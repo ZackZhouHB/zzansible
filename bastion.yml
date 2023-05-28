@@ -21,3 +21,42 @@
         dest: "./zack2-bastion-key.pem"
         mode: 0600
       when: keyout.changed
+
+    - name: create security group for bastion host
+      ec2_group: 
+        name: zack2-bastion-sg
+        descreiption: allow port 22 from anywhere
+        region: "{{region}}"
+        vpc_id: "{{vpcid}}"
+        rules:
+          - proto: tcp
+            from_port: 22
+            to_port: 22
+            cidr_ip: "{{MYIP}}"
+        register: bastion_sg_out
+
+    - name: create bastion ec2 instance
+      ec2:
+        key_name: zack2-bastion-key
+        region: "{{region}}"
+        instance_type: t2.micro
+        image: "{{bastion_ami}}"
+        wait: yes
+        wait_timeout: 300
+        instance_tags:
+          Name: "zack2_bastion_host"
+          Project: zack2
+          Owner: zack
+        exact_count: 1
+        count_tag:
+          Name: "zack2_bastion_host"
+          Project: zack2
+          Owner: zack
+        group_id: "{{bastion_sg_out.group_id}}"
+      register: bastion_ec2_out
+      
+
+
+
+
+
