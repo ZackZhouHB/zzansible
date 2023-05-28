@@ -1,8 +1,10 @@
-nginx_ami: ami-0370d04afa44db778
-tomcat_ami: ami-0370d04afa44db778
-memcache_ami: ami-0370d04afa44db778
-rmq_ami: ami-0370d04afa44db778
-mysql_ami: ami-0370d04afa44db778
+nginx_ami: ami-02cd9055b46e2a141
+tomcat_ami: ami-02cd9055b46e2a141
+memcache_ami: ami-02cd9055b46e2a141
+rmq_ami: ami-02cd9055b46e2a141
+mysql_ami: ami-02cd9055b46e2a141
 
 
 ## ubt ami-0d02292614a3b0df1
+## ami-02cd9055b46e2a141
+## ami-0310483fb2b488153
