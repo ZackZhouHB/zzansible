@@ -5,10 +5,10 @@
   tasks:
     
     - name: excute installation 
-      copy: src=files/install3.sh dest=/home/ubuntu mode=0777
+      copy: src=files/install4.sh dest=/home/ubuntu mode=0777
 
     - name: Execute the script
-      command: sh /home/ubuntu/install3.sh
+      command: sh /home/ubuntu/install4.sh
 
     - name: Config setup
       copy:
