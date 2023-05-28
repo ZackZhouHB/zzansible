@@ -8,3 +8,16 @@
       include_vars: vars/bastion_setup
     - name: Import VPC Variables
       include_vars: vars/output_vars
+
+    - name: create bastion key pair, returns generated private key
+      ec2_key:
+        name: zack2-bastion-key
+        region: "{{region}}"
+      register: keyout
+
+    - name: store key to a file
+      copy:
+        content: "{{keyout.key.private_key}}"
+        dest: "./zack2-bastion-key.pem"
+        mode: 0600
+      when: keyout.changed
