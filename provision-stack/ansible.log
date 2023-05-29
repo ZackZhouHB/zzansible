@@ -360,3 +360,152 @@
 2023-05-29 00:09:22,399 p=1059 u=ubuntu n=ansible | mc01                       : ok=7    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 2023-05-29 00:09:22,399 p=1059 u=ubuntu n=ansible | rmq01                      : ok=9    changed=7    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 2023-05-29 00:09:22,399 p=1059 u=ubuntu n=ansible | web01                      : ok=9    changed=6    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-05-29 00:39:50,761 p=3348 u=ubuntu n=ansible | PLAY [Generate artifact, copy artifact & sql file to files directory] ********************************************************
+2023-05-29 00:39:50,793 p=3348 u=ubuntu n=ansible | TASK [Gathering Facts] *******************************************************************************************************
+2023-05-29 00:39:51,888 p=3348 u=ubuntu n=ansible | ok: [localhost]
+2023-05-29 00:39:51,895 p=3348 u=ubuntu n=ansible | TASK [Install  jdk, maven, git] **********************************************************************************************
+2023-05-29 00:39:54,467 p=3348 u=ubuntu n=ansible | ok: [localhost] => (item=git)
+2023-05-29 00:39:56,768 p=3348 u=ubuntu n=ansible | ok: [localhost] => (item=openjdk-8-jdk)
+2023-05-29 00:39:59,121 p=3348 u=ubuntu n=ansible | ok: [localhost] => (item=maven)
+2023-05-29 00:39:59,131 p=3348 u=ubuntu n=ansible | TASK [Clone source code from github] *****************************************************************************************
+2023-05-29 00:40:00,288 p=3348 u=ubuntu n=ansible | ok: [localhost]
+2023-05-29 00:40:00,298 p=3348 u=ubuntu n=ansible | TASK [mvn install command to build artifact] *********************************************************************************
+2023-05-29 00:40:00,347 p=3348 u=ubuntu n=ansible | skipping: [localhost]
+2023-05-29 00:40:00,356 p=3348 u=ubuntu n=ansible | TASK [Copy artifacts to files directory] *************************************************************************************
+2023-05-29 00:40:01,231 p=3348 u=ubuntu n=ansible | ok: [localhost] => (item=/home/ubuntu/zzansible/provision-stack/Vprofile-repo/target/vprofile-v2.war)
+2023-05-29 00:40:01,242 p=3348 u=ubuntu n=ansible | TASK [Copy SQL file to files directory] **************************************************************************************
+2023-05-29 00:40:01,657 p=3348 u=ubuntu n=ansible | ok: [localhost]
+2023-05-29 00:40:01,662 p=3348 u=ubuntu n=ansible | PLAY [Set host to ip mapping in /etc/hosts file of all the instances in the stack] *******************************************
+2023-05-29 00:40:01,666 p=3348 u=ubuntu n=ansible | TASK [Gathering Facts] *******************************************************************************************************
+2023-05-29 00:40:02,828 p=3348 u=ubuntu n=ansible | ok: [cntl]
+2023-05-29 00:40:04,022 p=3348 u=ubuntu n=ansible | ok: [mc01]
+2023-05-29 00:40:04,176 p=3348 u=ubuntu n=ansible | ok: [web01]
+2023-05-29 00:40:04,236 p=3348 u=ubuntu n=ansible | ok: [rmq01]
+2023-05-29 00:40:05,103 p=3348 u=ubuntu n=ansible | ok: [app01]
+2023-05-29 00:40:05,137 p=3348 u=ubuntu n=ansible | ok: [db01]
+2023-05-29 00:40:05,148 p=3348 u=ubuntu n=ansible | TASK [Import VPC setup Variable] *********************************************************************************************
+2023-05-29 00:40:05,198 p=3348 u=ubuntu n=ansible | ok: [cntl]
+2023-05-29 00:40:05,219 p=3348 u=ubuntu n=ansible | ok: [web01]
+2023-05-29 00:40:05,243 p=3348 u=ubuntu n=ansible | ok: [app01]
+2023-05-29 00:40:05,265 p=3348 u=ubuntu n=ansible | ok: [rmq01]
+2023-05-29 00:40:05,265 p=3348 u=ubuntu n=ansible | ok: [mc01]
+2023-05-29 00:40:05,274 p=3348 u=ubuntu n=ansible | ok: [db01]
+2023-05-29 00:40:05,282 p=3348 u=ubuntu n=ansible | TASK [Update hosts file for all the hosts] ***********************************************************************************
+2023-05-29 00:40:06,338 p=3348 u=ubuntu n=ansible | ok: [rmq01]
+2023-05-29 00:40:06,339 p=3348 u=ubuntu n=ansible | ok: [mc01]
+2023-05-29 00:40:06,340 p=3348 u=ubuntu n=ansible | ok: [app01]
+2023-05-29 00:40:06,341 p=3348 u=ubuntu n=ansible | ok: [web01]
+2023-05-29 00:40:06,373 p=3348 u=ubuntu n=ansible | ok: [cntl]
+2023-05-29 00:40:06,682 p=3348 u=ubuntu n=ansible | ok: [db01]
+2023-05-29 00:40:06,686 p=3348 u=ubuntu n=ansible | PLAY [Setup Mysql with accounts db and remote login] *************************************************************************
+2023-05-29 00:40:06,696 p=3348 u=ubuntu n=ansible | TASK [Installing Mysql Service and dependencies] *****************************************************************************
+2023-05-29 00:40:07,800 p=3348 u=ubuntu n=ansible | ok: [db01] => (item=mysql-server)
+2023-05-29 00:40:08,740 p=3348 u=ubuntu n=ansible | ok: [db01] => (item=mysql-client)
+2023-05-29 00:40:09,461 p=3348 u=ubuntu n=ansible | failed: [db01] (item=python-mysqldb) => {"ansible_loop_var": "item", "changed": false, "item": "python-mysqldb", "msg": "No package matching 'python-mysqldb' is available"}
+2023-05-29 00:40:10,443 p=3348 u=ubuntu n=ansible | ok: [db01] => (item=python3-mysqldb)
+2023-05-29 00:40:11,400 p=3348 u=ubuntu n=ansible | ok: [db01] => (item=libmysqlclient-dev)
+2023-05-29 00:40:11,403 p=3348 u=ubuntu n=ansible | ...ignoring
+2023-05-29 00:40:11,411 p=3348 u=ubuntu n=ansible | TASK [Start and enable mysql service] ****************************************************************************************
+2023-05-29 00:40:12,192 p=3348 u=ubuntu n=ansible | ok: [db01]
+2023-05-29 00:40:12,202 p=3348 u=ubuntu n=ansible | TASK [creating mysql user] ***************************************************************************************************
+2023-05-29 00:40:12,782 p=3348 u=ubuntu n=ansible | [WARNING]: Module did not set no_log for update_password
+
+2023-05-29 00:40:12,783 p=3348 u=ubuntu n=ansible | changed: [db01]
+2023-05-29 00:40:12,792 p=3348 u=ubuntu n=ansible | TASK [Creating accounts DB] **************************************************************************************************
+2023-05-29 00:40:13,296 p=3348 u=ubuntu n=ansible | ok: [db01]
+2023-05-29 00:40:13,305 p=3348 u=ubuntu n=ansible | TASK [Enable remote login to mysql svc] **************************************************************************************
+2023-05-29 00:40:13,744 p=3348 u=ubuntu n=ansible | ok: [db01]
+2023-05-29 00:40:13,748 p=3348 u=ubuntu n=ansible | PLAY [Deploy SQL file on accounts db] ****************************************************************************************
+2023-05-29 00:40:13,757 p=3348 u=ubuntu n=ansible | TASK [Copy SQL to dbsrv] *****************************************************************************************************
+2023-05-29 00:40:14,325 p=3348 u=ubuntu n=ansible | ok: [db01]
+2023-05-29 00:40:14,334 p=3348 u=ubuntu n=ansible | TASK [Restoring DB] **********************************************************************************************************
+2023-05-29 00:40:14,897 p=3348 u=ubuntu n=ansible | changed: [db01]
+2023-05-29 00:40:14,898 p=3348 u=ubuntu n=ansible | RUNNING HANDLER [Restart mysql] **********************************************************************************************
+2023-05-29 00:40:17,401 p=3348 u=ubuntu n=ansible | changed: [db01]
+2023-05-29 00:40:17,406 p=3348 u=ubuntu n=ansible | PLAY [Install Memcache, Start & enable SVC] **********************************************************************************
+2023-05-29 00:40:17,415 p=3348 u=ubuntu n=ansible | TASK [Install Memcache] ******************************************************************************************************
+2023-05-29 00:40:18,396 p=3348 u=ubuntu n=ansible | ok: [mc01]
+2023-05-29 00:40:18,404 p=3348 u=ubuntu n=ansible | TASK [Start & Enable Memcache] ***********************************************************************************************
+2023-05-29 00:40:18,881 p=3348 u=ubuntu n=ansible | ok: [mc01]
+2023-05-29 00:40:18,890 p=3348 u=ubuntu n=ansible | TASK [Enable remote login to memecache] **************************************************************************************
+2023-05-29 00:40:19,177 p=3348 u=ubuntu n=ansible | ok: [mc01]
+2023-05-29 00:40:19,182 p=3348 u=ubuntu n=ansible | PLAY [Install & Setup RabbitMQ with user] ************************************************************************************
+2023-05-29 00:40:19,190 p=3348 u=ubuntu n=ansible | TASK [excute installation] ***************************************************************************************************
+2023-05-29 00:40:19,997 p=3348 u=ubuntu n=ansible | ok: [rmq01]
+2023-05-29 00:40:20,006 p=3348 u=ubuntu n=ansible | TASK [Execute the script] ****************************************************************************************************
+2023-05-29 00:40:27,941 p=3348 u=ubuntu n=ansible | changed: [rmq01]
+2023-05-29 00:40:27,951 p=3348 u=ubuntu n=ansible | TASK [Config setup] **********************************************************************************************************
+2023-05-29 00:40:28,523 p=3348 u=ubuntu n=ansible | ok: [rmq01]
+2023-05-29 00:40:28,532 p=3348 u=ubuntu n=ansible | TASK [rabbitmq_user] *********************************************************************************************************
+2023-05-29 00:40:30,694 p=3348 u=ubuntu n=ansible | ok: [rmq01]
+2023-05-29 00:40:30,704 p=3348 u=ubuntu n=ansible | TASK [Enables the rabbitmq_management plugin] ********************************************************************************
+2023-05-29 00:40:33,837 p=3348 u=ubuntu n=ansible | ok: [rmq01]
+2023-05-29 00:40:33,841 p=3348 u=ubuntu n=ansible | PLAY [Setup Tomcat8 & Deploy Artifact] ***************************************************************************************
+2023-05-29 00:40:33,851 p=3348 u=ubuntu n=ansible | TASK [Gathering Facts] *******************************************************************************************************
+2023-05-29 00:40:34,697 p=3348 u=ubuntu n=ansible | ok: [app01]
+2023-05-29 00:40:34,706 p=3348 u=ubuntu n=ansible | TASK [Install JDK on Ubuntu 18/20] *******************************************************************************************
+2023-05-29 00:40:38,209 p=3348 u=ubuntu n=ansible | ok: [app01]
+2023-05-29 00:40:38,218 p=3348 u=ubuntu n=ansible | TASK [Download Tomcat Tar Ball/Binaries] *************************************************************************************
+2023-05-29 00:40:40,068 p=3348 u=ubuntu n=ansible | ok: [app01]
+2023-05-29 00:40:40,078 p=3348 u=ubuntu n=ansible | TASK [Add tomcat group] ******************************************************************************************************
+2023-05-29 00:40:40,521 p=3348 u=ubuntu n=ansible | ok: [app01]
+2023-05-29 00:40:40,530 p=3348 u=ubuntu n=ansible | TASK [Add tomcat user] *******************************************************************************************************
+2023-05-29 00:40:41,052 p=3348 u=ubuntu n=ansible | ok: [app01]
+2023-05-29 00:40:41,062 p=3348 u=ubuntu n=ansible | TASK [file] ******************************************************************************************************************
+2023-05-29 00:40:41,354 p=3348 u=ubuntu n=ansible | ok: [app01]
+2023-05-29 00:40:41,364 p=3348 u=ubuntu n=ansible | TASK [Extract tomcat] ********************************************************************************************************
+2023-05-29 00:40:42,823 p=3348 u=ubuntu n=ansible | ok: [app01]
+2023-05-29 00:40:42,833 p=3348 u=ubuntu n=ansible | TASK [debug] *****************************************************************************************************************
+2023-05-29 00:40:42,884 p=3348 u=ubuntu n=ansible | ok: [app01] => {
+    "msg": "apache-tomcat-8.5.37"
+}
+2023-05-29 00:40:42,928 p=3348 u=ubuntu n=ansible | TASK [Synchronize /tmp/tomcat8/tomcat_cont /usr/local/tomcat8.] **************************************************************
+2023-05-29 00:40:43,509 p=3348 u=ubuntu n=ansible | changed: [app01 -> 172.20.4.227]
+2023-05-29 00:40:43,519 p=3348 u=ubuntu n=ansible | TASK [Change ownership of /usr/local/tomcat8] ********************************************************************************
+2023-05-29 00:40:43,887 p=3348 u=ubuntu n=ansible | changed: [app01]
+2023-05-29 00:40:43,897 p=3348 u=ubuntu n=ansible | TASK [Setup tomcat SVC file on ubuntu 16 and 18] *****************************************************************************
+2023-05-29 00:40:44,470 p=3348 u=ubuntu n=ansible | ok: [app01]
+2023-05-29 00:40:44,479 p=3348 u=ubuntu n=ansible | TASK [just force systemd to reread configs (2.4 and above)] ******************************************************************
+2023-05-29 00:40:45,281 p=3348 u=ubuntu n=ansible | ok: [app01]
+2023-05-29 00:40:45,290 p=3348 u=ubuntu n=ansible | TASK [Start & Enable tomcat SVC] *********************************************************************************************
+2023-05-29 00:40:45,743 p=3348 u=ubuntu n=ansible | ok: [app01]
+2023-05-29 00:40:45,753 p=3348 u=ubuntu n=ansible | TASK [stat] ******************************************************************************************************************
+2023-05-29 00:40:46,047 p=3348 u=ubuntu n=ansible | ok: [app01]
+2023-05-29 00:40:46,056 p=3348 u=ubuntu n=ansible | TASK [Stop tomcat8 svc] ******************************************************************************************************
+2023-05-29 00:40:47,206 p=3348 u=ubuntu n=ansible | changed: [app01]
+2023-05-29 00:40:47,216 p=3348 u=ubuntu n=ansible | TASK [Archive ROOT dir with timestamp] ***************************************************************************************
+2023-05-29 00:40:50,484 p=3348 u=ubuntu n=ansible | changed: [app01]
+2023-05-29 00:40:50,495 p=3348 u=ubuntu n=ansible | TASK [copy ROOT dir with old_ROOT name] **************************************************************************************
+2023-05-29 00:40:50,865 p=3348 u=ubuntu n=ansible | changed: [app01]
+2023-05-29 00:40:50,874 p=3348 u=ubuntu n=ansible | TASK [Delete current artifact] ***********************************************************************************************
+2023-05-29 00:40:51,201 p=3348 u=ubuntu n=ansible | changed: [app01] => (item=/usr/local/tomcat8/webapps/ROOT)
+2023-05-29 00:40:51,485 p=3348 u=ubuntu n=ansible | changed: [app01] => (item=/usr/local/tomcat8/webapps/ROOT.war)
+2023-05-29 00:40:51,495 p=3348 u=ubuntu n=ansible | TASK [Deploy vprofile artifact] **********************************************************************************************
+2023-05-29 00:40:54,925 p=3348 u=ubuntu n=ansible | changed: [app01]
+2023-05-29 00:40:54,934 p=3348 u=ubuntu n=ansible | TASK [Start tomcat8 svc] *****************************************************************************************************
+2023-05-29 00:40:55,431 p=3348 u=ubuntu n=ansible | changed: [app01]
+2023-05-29 00:40:55,440 p=3348 u=ubuntu n=ansible | TASK [Wait until ROOT.war is extracted to ROOT directory] ********************************************************************
+2023-05-29 00:40:58,079 p=3348 u=ubuntu n=ansible | ok: [app01]
+2023-05-29 00:40:58,088 p=3348 u=ubuntu n=ansible | TASK [Deploy web configuration file] *****************************************************************************************
+2023-05-29 00:40:59,066 p=3348 u=ubuntu n=ansible | changed: [app01]
+2023-05-29 00:40:59,067 p=3348 u=ubuntu n=ansible | RUNNING HANDLER [Restart Tomcat] *********************************************************************************************
+2023-05-29 00:41:01,107 p=3348 u=ubuntu n=ansible | changed: [app01]
+2023-05-29 00:41:01,112 p=3348 u=ubuntu n=ansible | PLAY [Setup Nginx svc] *******************************************************************************************************
+2023-05-29 00:41:01,121 p=3348 u=ubuntu n=ansible | TASK [Install nginx] *********************************************************************************************************
+2023-05-29 00:41:02,211 p=3348 u=ubuntu n=ansible | ok: [web01]
+2023-05-29 00:41:02,220 p=3348 u=ubuntu n=ansible | TASK [Start & ENable Nginx] **************************************************************************************************
+2023-05-29 00:41:02,690 p=3348 u=ubuntu n=ansible | ok: [web01]
+2023-05-29 00:41:02,699 p=3348 u=ubuntu n=ansible | TASK [Disable Nginx default website] *****************************************************************************************
+2023-05-29 00:41:03,000 p=3348 u=ubuntu n=ansible | ok: [web01]
+2023-05-29 00:41:03,010 p=3348 u=ubuntu n=ansible | TASK [Deploy web config file] ************************************************************************************************
+2023-05-29 00:41:03,588 p=3348 u=ubuntu n=ansible | ok: [web01]
+2023-05-29 00:41:03,598 p=3348 u=ubuntu n=ansible | TASK [Enable vproapp website] ************************************************************************************************
+2023-05-29 00:41:03,898 p=3348 u=ubuntu n=ansible | ok: [web01]
+2023-05-29 00:41:03,899 p=3348 u=ubuntu n=ansible | PLAY RECAP *******************************************************************************************************************
+2023-05-29 00:41:03,900 p=3348 u=ubuntu n=ansible | app01                      : ok=26   changed=10   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-05-29 00:41:03,900 p=3348 u=ubuntu n=ansible | cntl                       : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-05-29 00:41:03,900 p=3348 u=ubuntu n=ansible | db01                       : ok=11   changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=1   
+2023-05-29 00:41:03,902 p=3348 u=ubuntu n=ansible | localhost                  : ok=5    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2023-05-29 00:41:03,902 p=3348 u=ubuntu n=ansible | mc01                       : ok=6    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-05-29 00:41:03,902 p=3348 u=ubuntu n=ansible | rmq01                      : ok=8    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-05-29 00:41:03,903 p=3348 u=ubuntu n=ansible | web01                      : ok=8    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
