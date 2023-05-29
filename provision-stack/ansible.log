@@ -171,3 +171,35 @@
 2023-05-28 12:53:29,594 p=46370 u=ubuntu n=ansible | mc01                       : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 2023-05-28 12:53:29,594 p=46370 u=ubuntu n=ansible | rmq01                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 2023-05-28 12:53:29,594 p=46370 u=ubuntu n=ansible | web01                      : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-05-28 23:47:57,772 p=7090 u=ubuntu n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: site.yml
+
+2023-05-28 23:47:57,772 p=7090 u=ubuntu n=ansible | [WARNING]: No hosts matched, nothing to do
+
+2023-05-28 23:47:57,778 p=7090 u=ubuntu n=ansible | ERROR! No argument passed to command module (did you mean to run ansible-playbook?)
+2023-05-28 23:48:04,319 p=7092 u=ubuntu n=ansible | PLAY [Generate artifact, copy artifact & sql file to files directory] ********************************************************
+2023-05-28 23:48:04,333 p=7092 u=ubuntu n=ansible | TASK [Gathering Facts] *******************************************************************************************************
+2023-05-28 23:48:05,519 p=7092 u=ubuntu n=ansible | ok: [localhost]
+2023-05-28 23:48:05,529 p=7092 u=ubuntu n=ansible | TASK [Install  jdk, maven, git] **********************************************************************************************
+2023-05-28 23:48:08,156 p=7092 u=ubuntu n=ansible | ok: [localhost] => (item=git)
+2023-05-28 23:48:44,364 p=7092 u=ubuntu n=ansible | changed: [localhost] => (item=openjdk-8-jdk)
+2023-05-28 23:48:56,930 p=7092 u=ubuntu n=ansible | changed: [localhost] => (item=maven)
+2023-05-28 23:48:56,945 p=7092 u=ubuntu n=ansible | TASK [Clone source code from github] *****************************************************************************************
+2023-05-28 23:49:02,986 p=7092 u=ubuntu n=ansible | changed: [localhost]
+2023-05-28 23:49:02,997 p=7092 u=ubuntu n=ansible | TASK [mvn install command to build artifact] *********************************************************************************
+2023-05-28 23:49:44,640 p=7092 u=ubuntu n=ansible | changed: [localhost]
+2023-05-28 23:49:44,650 p=7092 u=ubuntu n=ansible | TASK [Copy artifacts to files directory] *************************************************************************************
+2023-05-28 23:49:45,945 p=7092 u=ubuntu n=ansible | changed: [localhost] => (item=/home/ubuntu/zzansible/provision-stack/Vprofile-repo/target/vprofile-v2.war)
+2023-05-28 23:49:45,956 p=7092 u=ubuntu n=ansible | TASK [Copy SQL file to files directory] **************************************************************************************
+2023-05-28 23:49:46,358 p=7092 u=ubuntu n=ansible | changed: [localhost]
+2023-05-28 23:49:46,362 p=7092 u=ubuntu n=ansible | PLAY [Set host to ip mapping in /etc/hosts file of all the instances in the stack] *******************************************
+2023-05-28 23:49:46,367 p=7092 u=ubuntu n=ansible | TASK [Gathering Facts] *******************************************************************************************************
+2023-05-28 23:50:32,573 p=7092 u=ubuntu n=ansible | fatal: [app01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 172.20.4.227 port 22: Connection timed out", "unreachable": true}
+2023-05-28 23:50:32,574 p=7092 u=ubuntu n=ansible | fatal: [rmq01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 172.20.4.231 port 22: Connection timed out", "unreachable": true}
+2023-05-28 23:50:32,574 p=7092 u=ubuntu n=ansible | fatal: [mc01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 172.20.4.157 port 22: Connection timed out", "unreachable": true}
+2023-05-28 23:50:46,674 p=7092 u=ubuntu n=ansible |  [ERROR]: User interrupted execution
+
+2023-05-28 23:53:03,642 p=12126 u=ubuntu n=ansible | PLAY [Set host to ip mapping in /etc/hosts file of all the instances in the stack] *******************************************
+2023-05-28 23:53:03,680 p=12126 u=ubuntu n=ansible | TASK [Gathering Facts] *******************************************************************************************************
+2023-05-28 23:53:05,355 p=12126 u=ubuntu n=ansible | ok: [cntl]
+2023-05-28 23:53:40,706 p=12126 u=ubuntu n=ansible |  [ERROR]: User interrupted execution
+
