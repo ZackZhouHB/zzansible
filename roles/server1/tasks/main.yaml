@@ -1,0 +1,31 @@
+- name: Install HTTPD package
+  yum:
+    name: httpd
+    state: present
+
+- name: Enable HTTPD service
+  service:
+    name: httpd
+    enabled: yes
+    state: started
+
+- name: Open port 80 in firewall
+  firewalld:
+    service: http
+    permanent: yes
+    state: enabled
+
+- name: replace index.html
+  copy:
+    src: zack.html
+    dest: /var/www/html/index.html
+    owner: root
+    group: root
+    mode: 0644
+  register: httpd_updated
+
+- name: restart httpd service
+  service:
+    name: httpd
+    state: restarted
+  when: httpd_updated.changed

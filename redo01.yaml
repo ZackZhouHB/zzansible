@@ -1,0 +1,9 @@
+---
+- host: all
+  become: true
+  tasks:
+
+  - name: update yum
+    yum:
+      name: lrzsz
+

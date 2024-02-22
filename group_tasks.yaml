@@ -1,0 +1,12 @@
+---
+- name: Install and configure HTTPD on CentOS
+  hosts: defaults
+  become: yes
+  tasks:
+
+    - name: Install usage packages
+      yum:
+        name:
+          - iftop
+          - lrzsz
+        stage: latest

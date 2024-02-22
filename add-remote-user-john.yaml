@@ -1,0 +1,44 @@
+---
+- name: configure local ansible.cfg for remote user "john" and private key
+  hosts: localhost
+  connection: local
+  tasks: # use local host and connection to modify ansible.cfg to change remoter_user and pravite key
+    - name: Modify ansible.cfg to include john as remote_user
+      lineinfile:
+        path: /etc/ansible/ansible.cfg
+        regexp: "^remote_user"
+        line: "remote_user = john"
+
+    - name: Modify ansible.cfg to include john's private key file
+      lineinfile:
+        path: /etc/ansible/ansible.cfg
+        regexp: "^private_key_file"
+        line: "private_key_file = ~/.ssh/id_ed25519"
+
+- name: Create user "john" and configure sudo
+  hosts: defaults
+  become: yes
+  vars: # use vars to get pub key from file
+    john_ssh_public_key: "{{ lookup('file', '~/.ssh/id_ed25519.pub') }}"
+  tasks:
+    - name: Create user "john"  # create user add to group
+      user:
+        name: john
+        group: root
+        shell: /bin/bash
+        createhome: yes
+        home: /home/john
+
+    - name: Add SSH public key for user "john"   # use authorized_key to allow ssh for john
+      authorized_key:
+        user: john
+        key: "{{ john_ssh_public_key }}"
+        state: present
+
+    - name: Create sudoers file for user "john" # create file to add john into sudoer without login passwd 
+      copy:
+        content: "john ALL=(ALL) NOPASSWD: ALL"
+        dest: /etc/sudoers.d/john
+        owner: root
+        group: root
+        mode: 0440

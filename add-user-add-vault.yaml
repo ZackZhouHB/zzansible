@@ -1,0 +1,18 @@
+---
+- name: Add multiple users with passwords from vault
+  hosts: defaults
+  become: yes
+  tasks:
+    - name: Include vault containing passwords
+      include_vars: passwords.yml
+
+    - name: Add users
+      user:
+        name: "{{ item.name }}"
+        group: root
+        password: "{{ item.password }}"
+        update_password: on_create
+        shell: /bin/bash
+      loop:
+        - { name: joe, password: "{{ joe_password }}" }
+        - { name: tina, password: "{{ tina_password }}" }

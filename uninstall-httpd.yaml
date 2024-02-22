@@ -1,0 +1,9 @@
+---
+- name: Install and configure HTTPD on CentOS
+  hosts: defaults
+  become: yes
+  tasks:
+    - name: Uninstall HTTPD if present
+      yum:
+        name: httpd
+        state: absent

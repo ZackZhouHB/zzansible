@@ -1,0 +1,20 @@
+---
+- name: pre
+  hosts: defaults
+  pre_tasks:
+    - name: Install epel-release
+      yum:
+        name:
+          - epel-release
+        state: latest
+    - name: Check Yum Repository List
+      yum:
+        list: repo
+
+  tasks:
+    - name: uninstall usage packages
+      yum:
+        name:
+          - iftop
+          - lrzsz
+        state: absent

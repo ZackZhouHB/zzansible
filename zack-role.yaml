@@ -1,0 +1,31 @@
+---
+- become: true
+  hosts: all
+  pre_tasks:
+  - name: update repository index 
+    tags: always
+    yum:
+      update_cache: yes
+    changed_when: false
+
+- import_playbook: /etc/ansible/add-more-user.yaml
+
+- hosts: all
+  become: true
+  roles:
+    - base
+
+
+- hosts: server1
+  become: true
+  roles: 
+    - server1
+
+
+- hosts: server2
+  become: true
+  roles:
+    - server2
+
+
+

@@ -42,24 +42,12 @@
 
 ## db-[99:101]-node.example.com
 
-[linux]
+[defaults]
+11.0.1.132
+11.0.1.131
 
-192.168.133.241
-192.168.133.242
+[server1]
+11.0.1.131
 
-[linux:vars]
-
-ansible_user=root
-ansible_password=123
-
-[truenas]
-
-192.168.133.168
-192.168.133.167
-
-[truenas:vars]
-
-ansible_user=root
-ansible_password=123
-
-
+[server2]
+11.0.1.132

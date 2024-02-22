@@ -1,0 +1,23 @@
+---
+- name: Cleanup playbook
+  hosts: server1
+  become: yes
+  roles:
+    - role: server1
+      cleanup: yes
+    - role: base
+      cleanup: yes
+
+
+- name: Cleanup playbook
+  hosts: server2
+  become: yes
+  roles:
+    - role: server2
+      cleanup: yes
+    - role: base
+      cleanup: yes
+
+
+    # Add other roles with cleanup option set to yes
+    #

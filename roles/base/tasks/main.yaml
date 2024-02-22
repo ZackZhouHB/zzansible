@@ -1,0 +1,5 @@
+- name: Add SSH public key for user "john"   # use authorized_key to allow ssh for john
+  authorized_key:
+    user: john
+    key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH/dk2c8RalZSB4uUEANL6e3yAfL/RVq8UWISN4fxZxk zack default"
+    state: present

@@ -1,0 +1,22 @@
+---
+- name: Install and configure HTTPD on CentOS
+  hosts: defaults
+  become: yes
+  tasks:
+    - name: Install HTTPD package
+      yum:
+        name: httpd
+        state: present
+
+    - name: Enable HTTPD service
+      service:
+        name: httpd
+        enabled: yes
+        state: started
+
+    - name: Open port 80 in firewall
+      firewalld:
+        service: http
+        permanent: yes
+        state: enabled
+
